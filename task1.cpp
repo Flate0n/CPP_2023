@@ -15,7 +15,10 @@ int main(){
             cout.width(3);
             cout<< setiosflags(ios::left)<<a;
         }
+
         cout<<"\n";
+        
     }
+
     return 0;
 }
