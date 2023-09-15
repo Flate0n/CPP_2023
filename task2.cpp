@@ -10,32 +10,36 @@
 using namespace std;
 
 int main(){
-    float x,X,y; //инициализация данных
-    int j,i;
-    bool flag_op=1;
-    unsigned long long m;
+    float x,X,y,n; //инициализация данных
+    bool flag_op=0;
+    int a;
+    unsigned long long b;
+    const double pi = 3.141592653589793;
     cout<<"Enter  X : ";//ввод данных пользователем
     cin>>x;
-    i=3;
+    x=x/180*pi;
+    a=3;
     X=x;
     y=x;
-    while(i<22){//основной цикл функции
-        m=1;
-        j=1;
-        while (j<(i+1)){//цикл для подсчета факториала
-            m=m*j;
-            j++;
+    for(int i=0;i<10;i++){//основной цикл функции
+        b=1;
+        for (int j=1;j<=a;j++){//цикл для подсчета факториала
+            b=b*j;
         }
+
+        n=pow(x,a)/b;
+
         if (flag_op==0){//флаг для поочередного сложения и вычитания
-            X=X+((pow(x,i))/m);
+            X=X-n;
             flag_op=1;  
         }
         else{
-            X=X-((pow(x,i))/m);
+            X=X+n;
             flag_op=0;
         }
-        i=i+2;
+        a=a+2;
     }
+
     y=sin(y);//встроенная функция посчета синуса
 
     cout<<"Built-in function sin(x)= "//вывод данных
