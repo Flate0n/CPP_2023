@@ -10,12 +10,13 @@
 using namespace std;
 
 int main(){
+    setlocale(LC_ALL,"RU");
     float x,X,y,n; //инициализация данных
     bool flag_op=0;
     int a;
     unsigned long long b;
     const double pi = 3.141592653589793;
-    cout<<"Enter  X : ";//ввод данных пользователем
+    cout<<"Введите  X : ";//ввод данных пользователем
     cin>>x;
     x=x/180*pi;
     a=3;
@@ -45,7 +46,7 @@ int main(){
     cout<<"Built-in function sin(x)= "//вывод данных
         <<resetiosflags(ios::right)<<setw(10)<<y<<"\n"
         <<"My function sin(x)= "
-        <<resetiosflags(ios::left)<<setw(16)<<X;
+        <<resetiosflags(ios::left)<<setw(16)<<X<<"\n";
 
     return 0;
 }
