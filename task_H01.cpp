@@ -1,7 +1,7 @@
 /*H01 (5б) Напишите функцию расчета синуса, используя его представление в виде ряда:
 Ограничьтесь первыми 10-ю членами ряда. Вычисление должно происходить в цикле.
 Рекомендация: используйте величины, вычисленные на предыдущем шаге.
-Сравните результат вашей функции с тем, что дает sin из модуля math.h
+Сравните результат вашей функции с тем, что дает cos из модуля math.h
 */
 #include <iostream>
 #include <math.h>
@@ -9,44 +9,43 @@
 
 using namespace std;
 
-int main(){
-    setlocale(LC_ALL,"RU");
-    float x,X,y,n; //инициализация данных
-    bool flag_op=0;
-    int a;
-    unsigned long long b;
-    const double pi = 3.141592653589793;
-    cout<<"Введите  X : ";//ввод данных пользователем
-    cin>>x;
-    x=x/180*pi;
-    a=3;
-    X=x;
-    y=x;
-    for(int i=0;i<10;i++){//основной цикл функции
-        b=1;
-        for (int j=1;j<=a;j++){//цикл для подсчета факториала
-            b=b*j;
-        }
+long long fun_factorial(int N ){
 
-        n=pow(x,a)/b;
+    long long factorial=1;
 
-        if (flag_op==0){//флаг для поочередного сложения и вычитания
-            X=X-n;
-            flag_op=1;  
-        }
-        else{
-            X=X+n;
-            flag_op=0;
-        }
-        a=a+2;
+    for(int j=1;j<=N;j++){
+
+        factorial=factorial*j;
     }
 
-    y=sin(y);//встроенная функция посчета синуса
+    return factorial;
+}
+double fun_my_cos(float X){
 
-    cout<<"Built-in function sin(x)= "//вывод данных
-        <<resetiosflags(ios::right)<<setw(10)<<y<<"\n"
-        <<"My function sin(x)= "
-        <<resetiosflags(ios::left)<<setw(16)<<X<<"\n";
+    //const double pi = 3.141592653589793;
+    double num,res;
 
+    for(int n=0;n<10;n++){
+
+        num = ( pow (-1,n) * pow(X,2*n) ) / fun_factorial(2*n);
+
+        res=res + num;
+    }
+    return res;
+}
+
+int main(){
+    setlocale(LC_ALL,"RU");
+    
+    float x;
+
+    cout<<"Введите  X : ";//ввод данных пользователем
+    cin>>x;
+
+    cout<<"Built-in function cos(x)= "//вывод данных
+        <<resetiosflags(ios::right)<<setw(10)<<cos(x)<<"\n"
+        <<"My function cos(x)= "
+       <<resetiosflags(ios::left)<<setw(16)<<fun_my_cos(x)<<"\n";
+        
     return 0;
 }
